@@ -42,4 +42,7 @@ public class BookDaoTest {
             System.out.println(queryBook);
         }
     }
+    @Test
+    public void GitTest(){
+    }
 }
