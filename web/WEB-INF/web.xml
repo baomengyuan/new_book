@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>com.swjtu.web.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>bookServlet</servlet-name>
+        <servlet-class>com.swjtu.web.BookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookServlet</servlet-name>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>clientBookServlet</servlet-name>
+        <servlet-class>com.swjtu.web.ClientBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clientBookServlet</servlet-name>
+        <url-pattern>/client/clientBookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/KaptchaServlet.jpg</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>carServlet</servlet-name>
+        <servlet-class>com.swjtu.web.CarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>carServlet</servlet-name>
+        <url-pattern>/carServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>orderServlet</servlet-name>
+        <servlet-class>com.swjtu.web.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>managerFilter</filter-name>
+        <filter-class>com.swjtu.Filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>managerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookServlet/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.swjtu.Filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!--对于所有的业务都需要-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--配置服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+</web-app>
